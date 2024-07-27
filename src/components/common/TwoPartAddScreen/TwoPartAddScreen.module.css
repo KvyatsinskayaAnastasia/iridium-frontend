@@ -1,0 +1,62 @@
+.formTitle {
+    text-align: center;
+    color: #6A329F;
+    padding-bottom: 10px;
+    border-bottom: solid #6A329F 3px ;
+}
+
+
+.mainContext {
+    display: grid;
+
+    grid-template-columns: 30% 70%;
+}
+
+.firstPartContext,
+.secondPartContext {
+    margin: 0 5px 5px;
+    padding: 10px;
+    word-wrap: break-word;
+    hyphens: auto;
+}
+
+.firstPartContext {
+    box-shadow: 0 1px 20px 0 #6A329F inset;
+    text-align: justify;
+    margin: 10px 10px 0;
+}
+
+.secondPartContext {
+    border-left: #6A329F solid 3px;
+}
+
+.title {
+    text-align: center;
+    padding-bottom: 5px;
+}
+
+.firstPartContext b,
+.secondPartContext b {
+    color: #6A329F;
+}
+
+.buttonContainer {
+    text-align: right;
+    margin-right: 10px;
+    margin-left: 10px;
+    margin-top: 5px;
+}
+
+.saveButton {
+    width: 30%;
+    padding: 5px;
+    border: none;
+    border-radius: 5px;
+    color: #6A329F;
+    background-color: #e1d6eb
+}
+
+.saveButton:hover {
+    color: #e1d6eb;
+    background-color: #6A329F;
+}

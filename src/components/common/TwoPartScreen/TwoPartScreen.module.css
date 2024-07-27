@@ -1,0 +1,32 @@
+.mainContext {
+    display: grid;
+
+    grid-template-columns: 30% 70%;
+}
+
+.firstPartContext,
+.secondPartContext {
+    margin: 5px 5px;
+    padding: 10px;
+    word-wrap: break-word;
+    hyphens: auto;
+}
+
+.firstPartContext {
+    box-shadow: 0 1px 20px 0 #6A329F inset;
+    text-align: justify;
+}
+
+.secondPartContext {
+    border-left: #6A329F solid 3px;
+}
+
+.title {
+    text-align: center;
+    padding-bottom: 5px;
+}
+
+.firstPartContext b,
+.secondPartContext b {
+    color: #6A329F;
+}

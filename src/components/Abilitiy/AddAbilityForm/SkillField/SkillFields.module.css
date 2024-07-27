@@ -1,0 +1,88 @@
+.skills {
+    margin-left: 15px;
+    margin-right: 17px;
+}
+
+.skillsForm {
+    display: grid;
+    grid-template-columns: 5% 90% auto;
+    grid-column-gap: 20px;
+}
+
+.minLevelPart,
+.skillPart {
+    margin: 10px 0;
+    position: relative;
+    width: 100%;
+}
+
+.minLevelPart .minLevelLabel,
+.skillPart .skillLabel {
+    hyphens: none;
+    background-color: #f9f9f9;
+    color: #6A329F;
+}
+
+.minLevelField,
+.skillField {
+    width: 100%;
+    background-color: inherit;
+
+    padding: 5px;
+    font-size: 14px;
+    font-family: 'Arial', serif;
+    font-style: normal;
+    border-radius: 5px;
+    border: 0;
+    box-shadow: 0 0 0 2px #CAC0D3;
+}
+
+.minLevelPart:hover .minLevelField,
+.skillPart:hover .skillField
+ {
+    background-color: inherit;
+    outline: 0;
+    box-shadow: 0 0 0 2px #6A329F;
+}
+
+.minLevelPart .minLevelField:focus,
+.skillPart .skillField:focus {
+    background-color: inherit;
+    outline: 0;
+    box-shadow: 0 0 0 2px #6A329F;
+}
+
+.minLevelPart:hover .minLevelLabel,
+.skillPart:hover .skillLabel {
+    color: #6A329F;
+}
+
+.minLevelPart .minLevelField:focus~.minLevelLabel,
+.skillPart .skillField:focus~.skillLabel{
+    color: #6A329F;
+}
+
+input[type=number]::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+}
+
+.skillButtonContainer {
+    height: 100%;
+    margin: 9px 0;
+}
+
+.skillButton {
+    margin-top: 23px;
+    margin-bottom: 5px;
+    width: 100%;
+    padding: 5px;
+    border-radius: 5px;
+    border: none;
+    color: #6A329F;
+    background-color: #e1d6eb
+}
+
+.skillButton:hover {
+    color: #e1d6eb;
+    background-color: #6A329F;
+}

@@ -1,0 +1,11 @@
+.abilities {
+    color: #6A329F;
+    margin-left: 15px;
+}
+
+.inlineInputs {
+    display: grid;
+    grid-auto-flow: column;
+    grid-template-columns: 30% 69%;
+    margin-left: 15px;
+}

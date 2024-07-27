@@ -1,0 +1,38 @@
+.selectorLabel {
+    color: #6A329F;
+    margin-right: 10px;
+}
+
+.selector {
+    background-color: inherit;
+    margin: 10px 0;
+
+    padding: 5px;
+    font-size: 14px;
+    font-family: 'Arial', serif;
+    font-style: normal;
+    border-radius: 5px;
+    border: 0;
+    box-shadow: 0 0 0 2px #CAC0D3;
+    color: #CAC0D3;
+}
+
+.selectorContainer:hover .selector {
+    background-color: inherit;
+    outline: 0;
+    box-shadow: 0 0 0 2px #6A329F;
+}
+
+.selectorContainer .selector:focus {
+    background-color: inherit;
+    outline: 0;
+    box-shadow: 0 0 0 2px #6A329F;
+}
+
+.selectorContainer:hover .selectorLabel {
+    color: #6A329F;
+}
+
+.selectorContainer .selector:focus ~ .selectorLabel {
+    color: #6A329F;
+}

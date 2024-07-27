@@ -1,0 +1,70 @@
+.nameWithDescription {
+    margin-left: auto;
+    margin-right: auto;
+    width: 200px;
+    position: relative;
+}
+
+.nameLabel {
+    color: #CAC0D3;
+}
+
+.nameWithDescription .nameLabel {
+    position: absolute;
+    background-color: #f9f9f9;
+    top: 0;
+    transform: translateY(-40%) scale(0.80);
+}
+
+.name,
+.description {
+    background-color: inherit;
+    margin: 5px 0;
+    width: 180px;
+
+    padding: 5px;
+    font-size: 14px;
+    font-family: 'Arial', serif;
+    font-style: normal;
+    border-radius: 5px;
+    border: 0;
+    box-shadow: 0 0 0 2px #CAC0D3;
+}
+
+.description {
+    height: 50px;
+    resize: none;
+}
+
+.nameWithDescription:hover .name,
+.nameWithDescription:hover .description {
+    background-color: inherit;
+    outline: 0;
+    box-shadow: 0 0 0 2px #6A329F;
+}
+
+.nameWithDescription .name:focus,
+.nameWithDescription .description:focus {
+    background-color: inherit;
+    outline: 0;
+    box-shadow: 0 0 0 2px #6A329F;
+}
+
+.nameWithDescription:hover .nameLabel {
+    color: #6A329F;
+}
+
+.nameWithDescription .name:focus~.nameLabel,
+.nameWithDescription .description:focus~.nameLabel{
+    color: #6A329F;
+}
+
+::placeholder {
+    color: #CAC0D3;
+    opacity: 1;
+}
+
+.name:focus::placeholder,
+.description:focus::placeholder {
+    color: transparent;
+}

@@ -1,0 +1,22 @@
+.abilityList {
+    text-align: center;
+    margin: 5px;
+
+    display: grid;
+    grid-template-areas: "b g f";
+}
+
+.basic {
+    color: #6A329F;
+    grid-area: b;
+}
+
+.general {
+    color: #6A329F;
+    grid-area: g;
+}
+
+.fighting {
+    color: #6A329F;
+    grid-area: f;
+}
