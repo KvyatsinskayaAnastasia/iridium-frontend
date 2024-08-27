@@ -10,7 +10,7 @@ const MagicItemContainer = (props) => {
 
   useEffect(() => {
     props.getMagic(id);
-  }, [])
+  }, [id])
 
   return (
     <MagicItem {...props}

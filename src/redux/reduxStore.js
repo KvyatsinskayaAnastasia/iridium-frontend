@@ -8,6 +8,7 @@ import abilityItemReducer from "./abilityItemReducer";
 import abilityListReducer from "./abilityListReducer";
 import raceListReducer from "./raceListReducer";
 import raceItemReducer from "./raceItemReducer";
+import authorizationReducer from "./authorizationReducer";
 
 let reducers = combineReducers({
   profile: profileReducer,
@@ -17,6 +18,7 @@ let reducers = combineReducers({
   ability: abilityItemReducer,
   raceList: raceListReducer,
   race: raceItemReducer,
+  currentUser: authorizationReducer,
   form: reducer,
 });
 

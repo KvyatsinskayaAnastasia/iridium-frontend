@@ -1,30 +1,42 @@
 import React from "react";
-import styles from './Profile.module.css';
-import ProfileInfo from "./ProfileInfo/ProfileInfo";
-import CharactersInfo from "./CharactersInfo/CharactersInfo";
-import TwoPartScreen from "../common/TwoPartScreen/TwoPartScreen";
+import { Layout, theme, Button } from "antd";
+import Header from "../Header/Header";
+import { useNavigate } from "react-router-dom";
+
+const { Content} = Layout;
 
 const Profile = (props) => {
+  const navigate = useNavigate();
+
+  const {
+    token: { colorBgContainer },
+  } = theme.useToken();
+
+  const logout = () => {
+    sessionStorage.clear();
+    navigate('/login');
+  }
+
   return (
-    <TwoPartScreen
-      secondPartTitle={"Персонажи"}
-      firstPartInfo={
-          <ProfileInfo/>
-      }
-      secondPartInfo={
-        <div>
-          <CharactersInfo/>
-          <div className={styles.buttonContainer}>
-            <button
-              className={styles.addButton}
-              onClick={props.onClick}
-            >
-              Новый персонаж
-            </button>
-          </div>
-        </div>
-      }
-    />
+    <Layout>
+      <Header/>
+      <Layout>
+        <Content
+          style={{
+            padding: 10,
+            margin: 0,
+            minHeight: 280,
+            background: colorBgContainer,
+          }}
+        >
+          <p>{props.currentUser.username}</p>
+          {props.currentUser.roles.map((role) => {
+            return (<p key={role.name}>{role.name}</p>)
+          })}
+          <Button onClick={logout}>Выйти</Button>
+        </Content>
+      </Layout>
+    </Layout>
   )
 }
 

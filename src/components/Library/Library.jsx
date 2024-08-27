@@ -1,14 +1,9 @@
 import React from "react";
 import { Layout, Menu, theme } from "antd";
 import { Link } from "react-router-dom";
+import Header from "../Header/Header";
 
 const { Content, Sider } = Layout;
-
-const refreshPage = () => {
-  setTimeout(() => {
-    window.location.reload(false);
-  }, 500);
-}
 
 const selected = () => {
   const selected = window.location.pathname.substring(1).split('/');
@@ -23,6 +18,7 @@ const selected = () => {
   }
   return ['']
 }
+
 const Library = (props) => {
   const items = [
     {
@@ -32,7 +28,7 @@ const Library = (props) => {
         return {
           key: `library-magic-${magic.id}`,
           label: (
-            <Link to={`/library/magic/${magic.id}`} onClick={refreshPage}>{magic.name}</Link>
+            <Link to={`/library/magic/${magic.id}`}>{magic.name}</Link>
           )
         }
       })
@@ -48,7 +44,7 @@ const Library = (props) => {
             return {
               key: `library-ability-basic-${ability.id}`,
               label: (
-                <Link to={`/library/ability/basic/${ability.id}`} onClick={refreshPage}>{ability.name}</Link>
+                <Link to={`/library/ability/basic/${ability.id}`}>{ability.name}</Link>
               )
             }
           })
@@ -60,7 +56,7 @@ const Library = (props) => {
             return {
               key: `library-ability-fighting-${ability.id}`,
               label: (
-                <Link to={`/library/ability/fighting/${ability.id}`} onClick={refreshPage}>{ability.name}</Link>
+                <Link to={`/library/ability/fighting/${ability.id}`}>{ability.name}</Link>
               )
             }
           })
@@ -72,7 +68,7 @@ const Library = (props) => {
             return {
               key: `library-ability-general-${ability.id}`,
               label: (
-                <Link to={`/library/ability/general/${ability.id}`} onClick={refreshPage}>{ability.name}</Link>
+                <Link to={`/library/ability/general/${ability.id}`} >{ability.name}</Link>
               )
             }
           })
@@ -80,38 +76,43 @@ const Library = (props) => {
       ]
     },
   ];
+
   const {
     token: { colorBgContainer },
   } = theme.useToken();
+
   return (
     <Layout>
-      <Sider
-        width={250}
-        style={{
-          background: colorBgContainer,
-        }}
-      >
-        <Menu
-          mode="inline"
-          defaultOpenKeys={selected()}
-          defaultSelectedKeys={selected()}
-          style={{
-            height: '100%'
-          }}
-          items={items}
-        />
-      </Sider>
+      <Header />
       <Layout>
-        <Content
+        <Sider
+          width={250}
           style={{
-            padding: 10,
-            margin: 0,
-            minHeight: 280,
             background: colorBgContainer,
           }}
         >
-          {props.content}
-        </Content>
+          <Menu
+            mode="inline"
+            defaultOpenKeys={selected()}
+            defaultSelectedKeys={selected()}
+            style={{
+              height: '100%'
+            }}
+            items={items}
+          />
+        </Sider>
+        <Layout>
+          <Content
+            style={{
+              padding: 10,
+              margin: 0,
+              minHeight: 280,
+              background: colorBgContainer,
+            }}
+          >
+            {props.content}
+          </Content>
+        </Layout>
       </Layout>
     </Layout>
   )

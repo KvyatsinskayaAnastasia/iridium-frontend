@@ -1,17 +1,56 @@
 import React from "react";
-import s from './Header.module.css';
 import { Link } from "react-router-dom";
+import { Layout, Menu, theme } from "antd";
+
+const headerItems = [
+  {
+    key: 'iridium',
+    label: 'Иридиум',
+    disabled: true
+  },
+  {
+    key: 'profile',
+    label: (
+      <Link to='/profile'>
+        Профиль
+      </Link>
+    )
+  },
+  {
+    key: 'library',
+    label: (
+      <Link to='/library'>
+        Библиотека
+      </Link>
+    )
+  }
+]
 
 const Header = () => {
+  const {
+    token: { colorBgContainer },
+  } = theme.useToken();
+
   return (
-    <header className={s.header}>
-      <div className={s.link}>
-        <Link to="/library"><b>Библиотека</b></Link>
-      </div>
-      <div className={s.link}>
-        <Link to="/profile"><b>Профиль</b></Link>
-      </div>
-    </header>
+    <Layout.Header
+      style={{
+        display: 'flex',
+        alignItems: 'center',
+        background: colorBgContainer,
+        padding: 0
+      }}
+    >
+      <Menu
+        theme="light"
+        mode="horizontal"
+        defaultSelectedKeys={window.location.pathname.split('/')[1]}
+        style={{
+          flex: 1,
+          minWidth: 0,
+        }}
+        items={headerItems}
+      />
+    </Layout.Header>
   )
 }
 

@@ -10,7 +10,7 @@ const AbilityItemContainer = (props) => {
 
   useEffect(() => {
     props.getAbility(id);
-  }, [])
+  }, [id])
 
   return (
     <AbilityItem {...props}

@@ -1,18 +1,18 @@
-import axios from "axios";
+import { instance } from "../api.config.js";
 
 export const abilityApi = {
   getAllAbilities() {
-    return axios.get(`/ability`)
+    return instance.get(`/ability`)
       .then(response => response.data);
   },
 
   getAbility(id) {
-    return axios.get(`/ability/${id}`)
+    return instance.get(`/ability/${id}`)
       .then(response => response.data);
   },
 
   addAbility(ability) {
-    return axios.post(`/ability`, ability)
+    return instance.post(`/ability`, ability)
       .then(response => response.data);
   }
 }

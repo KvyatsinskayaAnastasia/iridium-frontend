@@ -1,22 +1,23 @@
 import { connect } from "react-redux";
+import React, { useEffect } from "react";
 import Profile from "./Profile";
-import { setUserProfile } from "../../redux/profileReducer";
-import React from "react";
-import { useNavigate } from "react-router-dom";
+import { getCurrentUser } from "../../redux/authorizationReducer";
 
 const ProfileContainer = (props) => {
-  const navigate = useNavigate();
+
+  useEffect(() => {
+    props.getCurrentUser();
+  }, [])
 
   return (
     <Profile {...props}
-             profile={props.profile}
-             onClick={() => navigate("/character/new")}
+             currentUser={props.currentUser}
     />
   )
 }
 
 let mapStateToProps = (state) => ({
-  profile: state.profile
+  currentUser: state.currentUser
 });
 
-export default connect(mapStateToProps, { setUserProfile })(ProfileContainer);
+export default connect(mapStateToProps, { getCurrentUser })(ProfileContainer);

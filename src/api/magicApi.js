@@ -1,18 +1,18 @@
-import axios from "axios";
+import { instance } from "../api.config.js";
 
 export const magicApi = {
   getAllMagic() {
-    return axios.get(`/magic`)
+    return instance.get(`/magic`)
       .then(response => response.data);
   },
 
   getMagic(id) {
-    return axios.get(`/magic/${id}`)
+    return instance.get(`/magic/${id}`)
       .then(response => response.data);
   },
 
   addMagic(magic) {
-    return axios.post(`/magic`, magic)
+    return instance.post(`/magic`, magic)
       .then(response => response.data);
   }
 }
