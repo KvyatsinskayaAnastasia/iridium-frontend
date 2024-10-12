@@ -6,8 +6,10 @@ let initialState = {
   id: '',
   name: '',
   description: '',
-  raceType: '',
-  skills: []
+  appearance: '',
+  raceAbilities: [],
+  baseMagic: [],
+  unavailableMagic: []
 }
 
 const raceItemReducer = (state = initialState, action) => {

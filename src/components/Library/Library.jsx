@@ -75,6 +75,18 @@ const Library = (props) => {
         }
       ]
     },
+    {
+      key: 'library-race',
+      label: 'Расы',
+      children: !!props.allRaces && props.allRaces.map(race => {
+        return {
+          key: `library-race-${race.id}`,
+          label: (
+            <Link to={`/library/race/${race.id}`}>{race.name}</Link>
+          )
+        }
+      })
+    }
   ];
 
   const {

@@ -4,7 +4,7 @@ import { Divider, Space } from "antd";
 const AbilityItem = (props) => {
 
   const skills = () =>
-    props.ability.skills.map((skill) => {
+    props.ability.skills && props.ability.skills.map((skill) => {
       return (
         <div key={skill.id}>
           <div><b>Уровень {skill.minLevel}</b> - {skill.description}</div>

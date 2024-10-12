@@ -8,6 +8,7 @@ import LibraryContainer from "./components/Library/LibraryContainer";
 import ProtectedRouteContainer from "./components/common/ProtectedRoute/ProtectedRouteContainer";
 import LoginFormContainer from "./components/Login/LoginFormContainer";
 import ProfileContainer from "./components/Profile/ProfileContainer";
+import RaceLibraryInfo from "./components/Library/RaceLibraryInfo/RaceLibraryInfo";
 
 const App = () => {
   return (
@@ -33,6 +34,11 @@ const App = () => {
           <Route element={<ProtectedRouteContainer/>}>
             <Route path="/library/ability/:type/:id" element={
               <AbilityLibraryInfo/>
+            }/>
+          </Route>
+          <Route element={<ProtectedRouteContainer/>}>
+            <Route path="/library/race/:id" element={
+              <RaceLibraryInfo/>
             }/>
           </Route>
           <Route element={<ProtectedRouteContainer/>}>
