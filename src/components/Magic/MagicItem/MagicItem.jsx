@@ -4,7 +4,7 @@ import { Collapse, Divider } from "antd";
 const MagicItem = (props) => {
 
   const createSpellsItem = (spells) =>
-    spells.map((spell) => {
+    spells && spells.map((spell) => {
       return (
         <p key={spell.id}>
           <Divider orientation={"left"}>{spell.name}</Divider>
@@ -14,7 +14,7 @@ const MagicItem = (props) => {
     })
 
   const leveledSpellsInfo =
-    props.magic.leveledSpells.map((ls) => {
+    props.magic.leveledSpells && props.magic.leveledSpells.map((ls) => {
       return {
         key: ls.level,
         label: `Круг ${ls.level}`,

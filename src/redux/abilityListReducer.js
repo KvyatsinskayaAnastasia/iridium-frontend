@@ -20,8 +20,8 @@ const abilityListReducer = (state = initialState, action) => {
 
 export const setAllAbilities = (allAbilities) => ({ type: SET_ALL_ABILITY, allAbilities });
 
-export const getAllAbilities = () => async (dispatch) => {
-  let response = await abilityApi.getAllAbilities();
+export const getAllAbilities = (type) => async (dispatch) => {
+  let response = await abilityApi.getAllAbilities(type);
   dispatch(setAllAbilities(response));
 }
 

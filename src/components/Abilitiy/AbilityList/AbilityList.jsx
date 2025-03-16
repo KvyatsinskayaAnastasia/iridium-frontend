@@ -1,23 +1,41 @@
 import React from "react";
-import MenuItemsList from "../../common/MenuItemsList/MenuItemsList";
-import { Menu } from "antd";
+import { Button, Card, Col, Row, theme } from "antd";
 
 const AbilityList = (props) => {
 
-  return [
-    <Menu.SubMenu title={"Основные"} key={"library-ability-basic"}>
-      <MenuItemsList itemsList={props.allAbilities.filter(ability => ability.abilityType === "BASIC")}
-                     type={"library/ability"}/>
-    </Menu.SubMenu>,
-    <Menu.SubMenu title={"Общие"} key={"library-ability-general"}>
-      <MenuItemsList itemsList={props.allAbilities.filter(ability => ability.abilityType === "GENERAL")}
-                     type={"library/ability"}/>
-    </Menu.SubMenu>,
-    <Menu.SubMenu title={"Боевые"} key={"library-ability-fighting"}>
-      <MenuItemsList itemsList={props.allAbilities.filter(ability => ability.abilityType === "FIGHTING")}
-                     type={"library/ability"}/>
-    </Menu.SubMenu>
-  ]
+  const {
+    token: { boxShadowTertiary, colorPrimary },
+  } = theme.useToken();
+
+  return (
+    <Row gutter={[24, 24]}>
+      {props.allAbilities && props.allAbilities.map(ability => {
+          return <Col span={8}>
+            <Card title={ability.name}
+                  headStyle={{
+                    borderBottom: '1px solid rgba(212, 78, 2, 0.15)',
+                    boxShadow: 'rgba(212, 78, 2, 0.24) 0 2px 8px'
+                  }}
+                  style={{
+                    boxShadow: boxShadowTertiary
+                  }}
+                  extra={
+                    <Button
+                      type='text'
+                      style={{color: colorPrimary}}
+                      href={`/library/ability/${ability.id}`}
+                    >
+                      Подробнее
+                    </Button>
+                  }
+                  variant="borderless">
+              <div style={{ height: '200px', overflow: 'auto' }}> {ability.description}</div>
+            </Card>
+          </Col>
+        }
+      )}
+    </Row>
+  )
 }
 
 export default AbilityList;

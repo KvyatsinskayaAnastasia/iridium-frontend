@@ -5,8 +5,7 @@ const SET_MAGIC = 'SET_MAGIC';
 let initialState = {
   id: '',
   name: '',
-  description: '',
-  leveledSpells: []
+  description: ''
 }
 
 const magicListReducer = (state = initialState, action) => {

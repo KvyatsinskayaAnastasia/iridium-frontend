@@ -1,8 +1,9 @@
 import { instance } from "../api.config.js";
 
 export const abilityApi = {
-  getAllAbilities() {
-    return instance.get(`/ability`)
+  getAllAbilities(type) {
+    return type && instance.get(`/ability?abilityType=${type}`)
+      .then(response => response.data) || instance.get(`/ability`)
       .then(response => response.data);
   },
 

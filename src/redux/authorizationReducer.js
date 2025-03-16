@@ -26,7 +26,7 @@ export const login = (user) => async () => {
   let response = await authorizationApi.login(user);
   if (!!response) {
     sessionStorage.setItem("token", response.token);
-    window.location.href = 'http://localhost:3000/library';
+    window.location.href = 'http://localhost:3000/library/magic';
   }
 }
 

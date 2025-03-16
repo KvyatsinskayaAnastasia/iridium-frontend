@@ -4,11 +4,6 @@ import { Layout, Menu, theme } from "antd";
 
 const headerItems = [
   {
-    key: 'iridium',
-    label: 'Иридиум',
-    disabled: true
-  },
-  {
     key: 'profile',
     label: (
       <Link to='/profile'>
@@ -19,7 +14,7 @@ const headerItems = [
   {
     key: 'library',
     label: (
-      <Link to='/library'>
+      <Link to='/library/magic'>
         Библиотека
       </Link>
     )
@@ -28,16 +23,16 @@ const headerItems = [
 
 const Header = () => {
   const {
-    token: { colorBgContainer },
+    token: { headerBg },
   } = theme.useToken();
 
   return (
     <Layout.Header
       style={{
         display: 'flex',
-        alignItems: 'center',
-        background: colorBgContainer,
-        padding: 0
+        padding: 0,
+        marginLeft: 0,
+        backgroundColor: 'white'
       }}
     >
       <Menu
@@ -47,6 +42,9 @@ const Header = () => {
         style={{
           flex: 1,
           minWidth: 0,
+          justifyContent: 'flex-end',
+          backgroundColor: headerBg,
+          borderBottom: '2px solid rgba(212, 78, 2, 0.25)'
         }}
         items={headerItems}
       />

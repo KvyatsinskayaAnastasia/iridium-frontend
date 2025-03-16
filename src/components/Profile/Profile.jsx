@@ -19,7 +19,6 @@ const Profile = (props) => {
 
   return (
     <Layout>
-      <Header/>
       <Layout>
         <Content
           style={{
