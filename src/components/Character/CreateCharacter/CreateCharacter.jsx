@@ -1,13 +1,12 @@
-import React, { useState } from "react";
-import { Button, Checkbox, Form, Input, InputNumber, Layout, Radio, Select, Space, theme } from "antd";
-import { MinusCircleOutlined, PlusOutlined } from "@ant-design/icons";
+import React, { useEffect, useState } from "react";
+import { Button, Checkbox, Form, Input, InputNumber, Layout, message, Radio, Select, Space, theme, Upload } from "antd";
+import { LoadingOutlined, MinusCircleOutlined, PlusOutlined } from "@ant-design/icons";
 
 const CreateCharacter = (props) => {
   const [form] = Form.useForm();
   const [selectedMagics, setSelectedMagics] = useState([]);
 
   const createCharacter = (target) => {
-    console.log(target);
     let character = {
       name: target.name,
       age: target.age,
@@ -67,6 +66,9 @@ const CreateCharacter = (props) => {
 
   const generateCharacter = () => {
     props.generateCharacter({ characterLevel: 10 });
+  }
+
+  useEffect(() => {
     form.setFieldsValue({ age: props.character.age });
     form.setFieldsValue({ name: props.character.name });
     form.setFieldsValue({ temper: props.character.temper });
@@ -102,22 +104,28 @@ const CreateCharacter = (props) => {
           }
         })
     });
-    let magics = props.character.magics && props.character.magics
-      .map(mag => {
-        return {
-          magic: mag.id,
-          spells1: mag.spells.filter(spell => spell.level === 1).map(spell => spell.id),
-          spells2: mag.spells.filter(spell => spell.level === 2).map(spell => spell.id),
-          spells3: mag.spells.filter(spell => spell.level === 3).map(spell => spell.id),
-          spells4: mag.spells.filter(spell => spell.level === 4).map(spell => spell.id),
-          spells5: mag.spells.filter(spell => spell.level === 5).map(spell => spell.id)
-        }
-      })
-    form.setFieldsValue({
-      magics: magics
-    });
-    setSelectedMagics(magics.map(mag => mag.magic));
-  }
+    if (props.character.magics) {
+      let magics = props.character.magics
+        .map(mag => {
+          return {
+            magic: mag.id,
+            spells1: mag.spells.filter(spell => spell.level === 1).map(spell => spell.id),
+            spells2: mag.spells.filter(spell => spell.level === 2).map(spell => spell.id),
+            spells3: mag.spells.filter(spell => spell.level === 3).map(spell => spell.id),
+            spells4: mag.spells.filter(spell => spell.level === 4).map(spell => spell.id),
+            spells5: mag.spells.filter(spell => spell.level === 5).map(spell => spell.id)
+          }
+        })
+      form.setFieldsValue({
+        magics: magics
+      });
+      setSelectedMagics(magics.map(mag => mag.magic));
+    } else {
+      form.setFieldsValue({
+        magics: null
+      });
+    }
+  }, [props.character]);
 
   const getSpellsOptions = (spells) => {
     return spells.map(spell => {
@@ -135,6 +143,44 @@ const CreateCharacter = (props) => {
     token: { colorBgContainer },
   } = theme.useToken();
 
+  const getBase64 = (img, callback) => {
+    const reader = new FileReader();
+    reader.addEventListener('load', () => callback(reader.result));
+    reader.readAsDataURL(img);
+  };
+  const beforeUpload = file => {
+    const isJpgOrPng = file.type === 'image/jpeg' || file.type === 'image/png';
+    if (!isJpgOrPng) {
+      message.error('You can only upload JPG/PNG file!');
+    }
+    const isLt2M = file.size / 1024 / 1024 < 2;
+    if (!isLt2M) {
+      message.error('Image must smaller than 2MB!');
+    }
+    return isJpgOrPng && isLt2M;
+  };
+  const [loading, setLoading] = useState(false);
+  const [imageUrl, setImageUrl] = useState();
+  const handleChange = info => {
+    if (info.file.status === 'uploading') {
+      setLoading(true);
+      return;
+    }
+    if (info.file.status === 'done') {
+      // Get this url from response in real world.
+      getBase64(info.file.originFileObj, url => {
+        setLoading(false);
+        setImageUrl(url);
+      });
+    }
+  };
+  const uploadButton = (
+    <button style={{ border: 0, background: 'none' }} type="button">
+      {loading ? <LoadingOutlined/> : <PlusOutlined/>}
+      <div style={{ marginTop: 8 }}>Upload</div>
+    </button>
+  );
+
   return (
     <Layout>
       <Layout.Content style={{
@@ -150,6 +196,25 @@ const CreateCharacter = (props) => {
           name="createCharacterForm"
           onFinish={createCharacter}
         >
+          <Form.Item
+            style={{
+              display: 'inline-block',
+              width: '10%',
+              padding: 5
+            }}
+            name="image">
+            <Upload
+              name="avatar"
+              listType="picture-card"
+              className="avatar-uploader"
+              showUploadList={false}
+              action="https://660d2bd96ddfa2943b33731c.mockapi.io/api/upload"
+              beforeUpload={beforeUpload}
+              onChange={handleChange}
+            >
+              {imageUrl ? <img src={imageUrl} alt="avatar" style={{ width: '100%' }}/> : uploadButton}
+            </Upload>
+          </Form.Item>
           <Form.Item
             style={{
               display: 'inline-block',
@@ -189,7 +254,7 @@ const CreateCharacter = (props) => {
           <Form.Item
             style={{
               display: 'inline-block',
-              width: '25%',
+              width: '20%',
               padding: 5,
               verticalAlign: 'bottom'
             }}
@@ -205,7 +270,7 @@ const CreateCharacter = (props) => {
           <Form.Item
             style={{
               display: 'inline-block',
-              width: '35%',
+              width: '25%',
               padding: 5,
               verticalAlign: 'bottom'
             }}

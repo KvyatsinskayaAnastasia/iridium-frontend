@@ -1,10 +1,10 @@
 import React from "react";
-import LibraryContainer from "../LibraryContainer";
+import Library from "../Library";
 import AbilityListContainer from "../../Abilitiy/AbilityList/AbilityListContainer/AbilityListContainer";
 
 const AbilityListLibraryInfo = () => {
   return (
-    <LibraryContainer content={<AbilityListContainer/>}/>
+    <Library content={<AbilityListContainer/>}/>
   )
 }
 

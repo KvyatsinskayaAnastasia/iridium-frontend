@@ -31,12 +31,11 @@ const Header = () => {
       style={{
         display: 'flex',
         padding: 0,
-        marginLeft: 0,
-        backgroundColor: 'white'
+        marginLeft: 0
       }}
     >
       <Menu
-        theme="light"
+        theme="dark"
         mode="horizontal"
         defaultSelectedKeys={window.location.pathname.split('/')[1]}
         style={{

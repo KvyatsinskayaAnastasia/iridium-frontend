@@ -1,10 +1,10 @@
 import React from "react";
-import LibraryContainer from "../LibraryContainer";
+import Library from "../Library";
 import MagicListContainer from "../../Magic/MagicList/MagicListContainer/MagicListContainer";
 
 const MagicListLibraryInfo = () => {
   return (
-    <LibraryContainer content={<MagicListContainer/>}/>
+    <Library content={<MagicListContainer/>}/>
   )
 }
 

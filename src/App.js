@@ -4,7 +4,7 @@ import { ConfigProvider, Layout } from 'antd';
 import { Route, Routes } from "react-router";
 import MagicLibraryInfo from "./components/Library/MagicLibraryInfo/MagicLibraryInfo";
 import AbilityLibraryInfo from "./components/Library/AbilityLibraryInfo/AbilityLibraryInfo";
-import LibraryContainer from "./components/Library/LibraryContainer";
+import Library from "./components/Library/Library";
 import ProtectedRouteContainer from "./components/common/ProtectedRoute/ProtectedRouteContainer";
 import LoginFormContainer from "./components/Login/LoginFormContainer";
 import ProfileContainer from "./components/Profile/ProfileContainer";
@@ -16,38 +16,50 @@ import AbilityListLibraryInfo from "./components/Library/AbilityListLibraryInfo/
 import Header from "./components/Header/Header";
 import RaceListLibraryInfo from "./components/Library/RaceListLibraryInfo/RaceListLibraryInfo";
 import CharacterListLibraryInfo from "./components/Library/CharacterListLibraryInfo/CharacterListLibraryInfo";
+import CharacterLibraryInfo from "./components/Library/CharacterLibraryInfo/CharacterLibraryInfo";
 
 const App = () => {
   return (
     <ConfigProvider theme={{
       components: {
         Card: {
-          headerBg: 'rgba(212, 78, 2, 0.15)'
+          headerBg: 'rgb(212, 78, 2)',
+          colorBgBase: 'black'
         },
         Menu: {
-          itemHoverBg: 'rgba(212, 78, 2, 0.05)',
-          itemSelectedBg: 'rgba(212, 78, 2, 0.15)'
         },
         Layout: {
-          bodyBg: 'white',
-          footerBg: 'rgba(212, 78, 2, 0.15)',
+          bodyBg: 'black',
+          footerBg: '#001529',
         },
         Collapse: {
-          headerBg: 'rgba(212, 78, 2, 0.15)'
-        }
+          headerBg: 'rgb(212, 78, 2)'
+        },
+        Button: {
+          primaryShadow: ''
+        },
+        Select: {
+          optionActiveBg: 'rgba(212, 78, 2, 0.5)',
+          optionSelectedBg: 'rgb(212, 78, 2)'
+        },
       },
       token:
         {
-          colorSplit: 'rgba(212, 78, 2, 0.24)',
+          colorBgElevated: 'black',
+          colorBgBase: 'black',
+          colorSplit: 'rgb(212, 78, 2)',
           colorPrimary: 'rgb(212, 78, 2)',
-          headerBg: 'rgba(212, 78, 2, 0.15)',
-          colorBorder: 'rgba(212, 78, 2, 0.25)',
+          colorText: 'rgb(255, 255, 255, 0.65)',
+          colorBgContainer: 'black',
+          colorBorder: 'rgb(212, 78, 2)',
+          lineWidth: 2,
           fontSize: 16,
-          boxShadowTertiary: 'rgba(212, 78, 2, 0.24) 0px 3px 8px'
+          colorBorderSecondary: 'rgb(212, 78, 2)',
+          colorLink: 'rgb(250,141,79)'
         }
     }}>
-      <Layout style={{scrollbarColor: 'rgba(212, 78, 2, 0.24) white'}}>
-        <Header />
+      <Layout style={{ scrollbarColor: 'rgba(212, 78, 2) black' }}>
+        <Header/>
         <Routes>
           <Route path="/login" element={
             <LoginFormContainer/>
@@ -57,7 +69,7 @@ const App = () => {
           </Route>
           <Route element={<ProtectedRouteContainer/>}>
             <Route path="/library" element={
-              <LibraryContainer/>
+              <Library/>
             }/>
           </Route>
           <Route element={<ProtectedRouteContainer/>}>
@@ -98,6 +110,11 @@ const App = () => {
           <Route element={<ProtectedRouteContainer/>}>
             <Route path="/library/character" element={
               <CharacterListLibraryInfo/>
+            }/>
+          </Route>
+          <Route element={<ProtectedRouteContainer/>}>
+            <Route path="/library/character/:id" element={
+              <CharacterLibraryInfo/>
             }/>
           </Route>
           <Route element={<ProtectedRouteContainer/>}>

@@ -1,13 +1,22 @@
 import React from "react";
-import { Layout, Menu, theme } from "antd";
+import { Button, Layout, Menu } from "antd";
 import { Link } from "react-router-dom";
+import { PlusCircleOutlined } from "@ant-design/icons";
 
 const { Content, Sider } = Layout;
 
 const selected = () => {
   const selected = window.location.pathname.substring(1).split('/');
-  if (selected.length === 2) {
+  if (selected.length > 1) {
     return [selected.join('-')];
+  }
+  return ['']
+}
+
+const open = () => {
+  const selected = window.location.pathname.substring(1).split('/');
+  if (selected.length === 3) {
+    return [selected[0] + '-' + selected[1]];
   }
   return ['']
 }
@@ -42,37 +51,42 @@ const Library = (props) => {
     },
     {
       key: 'library-character',
-      label: <Link to={'/library/character'}>Персонажи</Link>
+      label: <div>
+        <Link to={'/library/character'}>Персонажи</Link>
+        <Button
+          style={{
+            float: 'right',
+            marginTop: '5px'
+          }}
+          type="link"
+          shape="circle"
+          icon={<PlusCircleOutlined href={'/character/create'}/>}
+          href={'/character/create'}
+        />
+      </div>
     }
   ];
-
-  const {
-    token: { bodyBg },
-  } = theme.useToken();
 
   return (
     <Layout>
       <Sider
+        theme="dark"
         width={250}
       >
         <Menu
+          theme="dark"
           mode="inline"
-          defaultOpenKeys={selected()}
+          defaultOpenKeys={open()}
           defaultSelectedKeys={selected()}
-          style={{
-            height: '100%',
-            borderRight: '2px solid rgba(212, 78, 2, 0.25)'
-          }}
           items={items}
         />
       </Sider>
-      <Layout style={{background: bodyBg}}>
+      <Layout>
         <Content
           style={{
             padding: 10,
             margin: '10px',
-            minHeight: 280,
-            background: bodyBg
+            minHeight: 280
           }}
         >
           {props.content}

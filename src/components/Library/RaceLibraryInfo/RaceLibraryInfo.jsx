@@ -1,10 +1,10 @@
 import React from "react";
-import LibraryContainer from "../LibraryContainer";
 import RaceItemContainer from "../../Race/RaceItem/RaceItemContainer/RaceItemContainer";
+import Library from "../Library";
 
 const RaceLibraryInfo = () => {
   return (
-    <LibraryContainer content={<RaceItemContainer/>}/>
+    <Library content={<RaceItemContainer/>}/>
   )
 }
 
