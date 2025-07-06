@@ -15,7 +15,7 @@ let initialState = {
   biography: '',
   aim: '',
   nationality: '',
-  image: '',
+  imageUrl: '',
   characterType: '',
   userId: ''
 }

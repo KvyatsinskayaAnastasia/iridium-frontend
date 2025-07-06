@@ -6,6 +6,7 @@ import { getAllMagic } from "../../../../redux/magicListReducer";
 import { getAllAbilities } from "../../../../redux/abilityListReducer";
 import { generateCharacter } from "../../../../redux/characterItemReducer";
 import { addCharacter } from "../../../../redux/characterListReducer";
+import {upload} from "../../../../redux/attachmentReducer";
 
 const CreateCharacterContainer = (props) => {
 
@@ -32,6 +33,7 @@ const CreateCharacterContainer = (props) => {
                      addCharacter={props.addCharacter}
                      generateCharacter={props.generateCharacter}
                      character={props.character}
+                     upload={props.upload}
     />
   )
 }
@@ -40,8 +42,9 @@ let mapStateToProps = (state) => ({
   allMagic: state.magicList.allMagic,
   allAbilities: state.abilityList.allAbilities,
   allRaces: state.raceList.allRaces,
-  character: state.character
+  character: state.character,
+  attachment: state.attachment
 });
 
 
-export default connect(mapStateToProps, { getAllMagic, getAllAbilities, getAllRaces, addCharacter, generateCharacter })(CreateCharacterContainer);
+export default connect(mapStateToProps, { getAllMagic, getAllAbilities, getAllRaces, addCharacter, generateCharacter, upload })(CreateCharacterContainer);

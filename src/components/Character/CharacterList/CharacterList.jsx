@@ -1,5 +1,5 @@
-import React from "react";
-import { Button, Card, Col, Row } from "antd";
+ import React from "react";
+import {Button, Card, Col, Image, Row} from "antd";
 
 const CharacterList = (props) => {
   return (
@@ -16,7 +16,8 @@ const CharacterList = (props) => {
                     </Button>
                   }
                   variant="borderless">
-              <div style={{ height: '200px', overflow: 'auto' }}> {character.biography}</div>
+              <Image width={200}
+                     src={`data:image/jpeg;base64, ${character.imageUrl.contentAsByteArray}`}></Image>
             </Card>
           </Col>
         }

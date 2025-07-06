@@ -38,6 +38,10 @@ const App = () => {
         Button: {
           primaryShadow: ''
         },
+        Input: {
+          activeShadow: '0 0 0 2px rgb(212, 78, 2)',
+          errorActiveShadow: '0 0 0 2px red'
+        },
         Select: {
           optionActiveBg: 'rgba(212, 78, 2, 0.5)',
           optionSelectedBg: 'rgb(212, 78, 2)'
@@ -51,14 +55,14 @@ const App = () => {
           colorPrimary: 'rgb(212, 78, 2)',
           colorText: 'rgb(255, 255, 255, 0.65)',
           colorBgContainer: 'black',
-          colorBorder: 'rgb(212, 78, 2)',
+          colorBorder: 'rgb(124,50,0)',
           lineWidth: 2,
           fontSize: 16,
           colorBorderSecondary: 'rgb(212, 78, 2)',
           colorLink: 'rgb(250,141,79)'
         }
     }}>
-      <Layout style={{ scrollbarColor: 'rgba(212, 78, 2) black' }}>
+      <Layout style={{ scrollbarColor: 'rgba(212, 78, 2) black', minHeight: '100vh' }}>
         <Header/>
         <Routes>
           <Route path="/login" element={

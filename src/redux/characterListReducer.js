@@ -26,7 +26,7 @@ export const getAllCharacters = (type) => async (dispatch) => {
 }
 
 export const addCharacter = (character) => async () => {
-  let response = await characterApi.addCharacter(character);
+  await characterApi.addCharacter(character);
   // window.location.href = `http://localhost:3000/character/${response}`;
 }
 

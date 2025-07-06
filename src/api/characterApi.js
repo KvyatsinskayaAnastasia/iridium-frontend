@@ -1,4 +1,4 @@
-import { instance } from "../api.config.js";
+import {instance, multipartInstance} from "../api.config.js";
 
 export const characterApi = {
   getAllCharacters() {
@@ -12,7 +12,7 @@ export const characterApi = {
   },
 
   addCharacter(character) {
-    return instance.post(`/character`, character)
+    return multipartInstance.post(`/character`, character)
       .then(response => response.data);
   },
 
